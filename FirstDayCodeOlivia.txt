@@ -1,0 +1,21 @@
+Gibber.clear()
+
+s = Synth({useADSR:true}).note.seq([2,3,4,3,4,2,1], 1/4)
+ms = Monosynth('bleep').note.seq( [0,1,2,3].rnd(), 1/8 )
+
+ms = Monosynth('bleep').note.seq( [0,1,2,3].rnd(), 1/4 )
+  
+d=EDrums()
+
+d.play ('oh')
+d.play ('ch')
+d.play('kd')
+d.play('cb')
+
+st = Steps ({
+  oh:'x.x.',                      
+ch: '.x.x',                    
+kd: 'x.x.x.x.x',   
+  cb:'x...'   
+}, d)
+
