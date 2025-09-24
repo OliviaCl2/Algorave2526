@@ -1,0 +1,13 @@
+drums = Drums()
+drums.tidal( '[sd sd] kd [sd kd] oh' )
+drums.gain.fade( 0, 1, 8 )
+
+//wait 5 set to play synth
+
+s = Synth('square.perc')
+s.note.seq( [8,9, 6, 7], 1/4 )
+s.gain.fade( 1, 0, 20)
+
+bass  = Monosynth('bass')
+bass.note.seq( [0,7], 1/4 )
+bass.gain.fade( 0, 1, 12 )
