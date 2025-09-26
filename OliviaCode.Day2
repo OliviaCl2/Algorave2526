@@ -1,0 +1,32 @@
+Gibber.clear()
+
+sy=Synth ('pwm.squeak').note.seq([10,1,10,1],1/4)
+sy.gain.fade(1,0,4)
+//wait 1 to play
+
+s = Synth('bleep').note.seq([2,3,4,3,4,2,1], 1/4)
+ms = Monosynth('bleep').note.seq( [0,1,2,3].rnd(), 1/8 )
+ms.gain.fade(0.2,0.1,4)
+mn = Monosynth('bleep').note.seq( [0,1,2,3].rnd(), 1/4 )
+  mn.gain.fade(0,0.4,6)
+
+//wait 2  to play
+drums = Drums()
+drums.tidal( '[sd sd] kd [sd kd] oh' )
+drums.gain.fade( 0, 1, 8 )
+
+//wait 1  to play
+bass  = Monosynth('bass')
+bass.note.seq( [0,7], 1/4 )
+bass.gain.fade( 0, 1, 12 )
+
+//after 10 
+sy.stop()
+s.stop()
+ms.stop()
+mn.stop()
+
+//after 1 
+syn = Synth( 'bleep' )
+syn.note(0)
+syn.note.seq( 0, 1/4 )
