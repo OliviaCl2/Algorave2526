@@ -1,13 +1,43 @@
+//Intro
+
+Clock.bpm = 90
+a = Freesound( 431760 )
+
+a.trigger( 1 )
+
+//play fade after intro part
+
+a.gain.fade(1, 0, 5)
+
+//Drum beat
+
 drums = Drums()
 drums.tidal( '[sd sd] kd [sd kd] oh' )
 drums.gain.fade( 0, 1, 8 )
 
-//wait 5 set to play synth
+//wait 5 sec set to play synth
 
 s = Synth('square.perc')
 s.note.seq( [8,9, 6, 7], 1/4 )
 s.gain.fade( 1, 0, 20)
 
+//wait 2 sec to b=play bass
+
 bass  = Monosynth('bass')
 bass.note.seq( [0,7], 1/4 )
 bass.gain.fade( 0, 1, 12 )
+
+bass.gain.fade(1, 0, 6)
+
+//y = Synth('square.perc')
+//y.note.seq( [6, 8], 1/4 )
+//y.gain.fade( 0, 1, 10)
+
+pad = Synth[4]('rhodes', {decay:8, gain:.15})
+pad.chord.seq([[1,5,6,4], [1,6,2,5], [0,2,4,6], [1,2,4,7]], 1)
+
+d = Drums()
+d.tidal( '<sd*3 sd*2> sd [kd*2 sd] <oh ch*3 ch*6>' )
+d.gain.fade( 0, 1, 8 )
+
+
