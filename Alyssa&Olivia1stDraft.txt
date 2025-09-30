@@ -1,0 +1,110 @@
+//Verse one/Intro
+
+drums = Drums()
+drums.tidal( '[sd sd] kd [sd kd] oh' )
+drums.gain.fade( 0, 1, 8 )
+
+bass  = Monosynth('bass')
+bass.note.seq( [0,7], 1/4 )
+bass.gain.fade( 0, 1, 12 )
+
+pad = Synth[4]('rhodes', {decay:8, gain:.15})
+pad.chord.seq([[1,5,6,4], [1,6,2,5], [0,2,4,6], [1,2,4,7]], 1)
+
+syn = Synth( 'bleep' )
+syn.note(0)
+syn.note.seq( 0, 1/4 )
+mn.gain.fade(0,0.4,6)
+
+
+//Next part of the song
+
+
+bass.stop()
+
+//make different chord set
+
+pad = Synth[4]('rhodes', {decay:8, gain:.15})
+pad.chord.seq([[1,5,6,4], [1,6,2,5], [0,2,4,6], [1,2,4,7]], 1)
+
+
+//other
+
+s = Synth('bleep').note.seq([2,3,4,3,4,2,1], 1/4)
+ms = Monosynth('bleep').note.seq( [0,1,2,3].rnd(), 1/8 )
+ms.gain.fade(0.2,0.1,4)
+mn = Monosynth('bleep').note.seq( [0,1,2,3].rnd(), 1/4 )
+
+
+//Intro
+
+Clock.bpm = 90
+a = Freesound( 431760 )
+
+a.trigger( 1 )
+
+//play fade after intro part
+
+a.gain.fade(1, 0, 5)
+
+//Drum beat
+
+drums = Drums()
+drums.tidal( '[sd sd] kd [sd kd] oh' )
+drums.gain.fade( 0, 1, 8 )
+
+//wait 5 sec set to play synth
+
+s = Synth('square.perc')
+s.note.seq( [8,9, 6, 7], 1/4 )
+s.gain.fade( 1, 0, 20)
+
+//wait 2 sec to b=play bass
+
+
+
+bass.gain.fade(1, 0, 6)
+
+//play whenever 
+
+pad = Synth[4]('rhodes', {decay:8, gain:.15})
+pad.chord.seq([[1,5,6,4], [1,6,2,5], [0,2,4,6], [1,2,4,7]], 1)
+
+//d = Drums()
+//d.tidal( '<sd*3 sd*2> sd [kd*2 sd] <oh ch*3 ch*6>' )
+//d.gain.fade( 0, 1, 8 )
+
+
+
+Gibber.clear()
+
+sy=Synth ('pwm.squeak').note.seq([10,1,10,1],1/4)
+sy.gain.fade(1,0,4)
+//wait 1 to play
+
+s = Synth('bleep').note.seq([2,3,4,3,4,2,1], 1/4)
+ms = Monosynth('bleep').note.seq( [0,1,2,3].rnd(), 1/8 )
+ms.gain.fade(0.2,0.1,4)
+mn = Monosynth('bleep').note.seq( [0,1,2,3].rnd(), 1/4 )
+  mn.gain.fade(0,0.4,6)
+
+//wait 2  to play
+drums = Drums()
+drums.tidal( '[sd sd] kd [sd kd] oh' )
+drums.gain.fade( 0, 1, 8 )
+
+//wait 1  to play
+bass  = Monosynth('bass')
+bass.note.seq( [0,7], 1/4 )
+bass.gain.fade( 0, 1, 12 )
+
+//after 10 
+sy.stop()
+s.stop()
+ms.stop()
+mn.stop()
+
+//after 1 
+syn = Synth( 'bleep' )
+syn.note(0)
+syn.note.seq( 0, 1/4 )
