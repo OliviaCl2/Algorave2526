@@ -1,0 +1,87 @@
+//We Need to Add Visuals
+
+//Verse one/Intro
+Clock.bpm=140
+
+// gradient sequence at speeds of 1, 2 & 4
+gradient([1,2,4]).out(o0)
+
+drums = Drums()
+drums.tidal( '[sd sd] kd [sd kd] oh' )
+drums.gain.fade( 0, 1, 8 )
+sphere = Sphere().render()
+sphere.radius = drums
+sphere.radius.offset=1
+sphere.radius.multiplier = 2
+
+//wait until faded in
+
+bass  = Monosynth('bass')
+bass.note.seq( [0,7], 1/4 )
+bass.gain.fade( 0, 1, 12 )
+
+//wait until fully faded in
+
+Clock.bpm = 200
+filter = Filter()
+drums = Drums()
+drums.fx.add(filter)
+drums.fx.add(Distortion('crunch'))
+filter.mode = 1
+filter.cutoff = 0.2
+
+filter.cutoff.fade(0.1, 0.7, 8)
+drums.tidal("sd*8")
+
+drums.tidal("sd*16")
+drums.tidal("sd*32")
+
+bass.stop()
+
+drums.tidal( '[sd sd] kd [sd kd] oh' )
+
+
+//stop? control . 
+
+pad = Synth[4]('rhodes', {decay:8, gain:.15})
+pad.chord.seq([[1,5,6,4], [1,6,2,5], [0,2,4,6], [1,2,4,7]], 1)
+
+syn = Synth( 'bleep' )
+syn.note(0)
+syn.note.seq( 0, 1/4 )
+
+
+Clock.bpm=145
+Clock.bpm=150
+Clock.bpm=155
+Clock.bpm=160
+Clock.bpm=165
+Clock.bpm=170
+Clock.bpm=180
+
+// First! Block execute both the filter sweep, and the start of whatever it is you're sweeping.
+filter.cutoff.fade(0.1, 0.7, 8)
+drums.tidal("sd*8")
+
+Clock.bpm=190
+Clock.bpm=205
+
+drums.stop()
+bass.stop()
+pad.stop()
+syn.stop()
+
+
+drums.tidal("[kd ~ ~ sd kd ~ sd ~]")
+
+
+//Next part of the song
+
+//make different chord set
+Clock.bpm=190
+pad = Synth[4]('rhodes', {decay:4, gain:0.2})
+pad.chord.seq([[2,4,6,8], [1,3,5], [4,5], [6,7,4,5]], 1)
+
+pad.gain.fade(.5, 0, 8 )
+drums.gain.fade(1, 0, 8 )
+
