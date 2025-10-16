@@ -12,7 +12,7 @@ drums.gain.fade( 0, 1, 15)
 //visual
 box=Box().render()
 box.scale = 1.5
-box.translate([-5, 0, 0])
+box.translate(-1, 0, 0)
 
 
 sphere = Sphere().material('red').render()
